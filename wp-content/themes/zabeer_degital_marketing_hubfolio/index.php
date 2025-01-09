@@ -16,11 +16,24 @@
 
 <body <?php body_class(); ?>>
 
+    <?php
+    /*
     <a href="">
          <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="">
     </a>
-<!-- hello -->
- <h1>ok branch </h1>
+*/
+    ?>
+
+    <a href="">
+        <img src="<?php echo get_theme_mod('zabeer_logo');  ?>" alt="">
+    </a>
+
+    <?php 
+    wp_nav_menu(array('theme_location'=>'main_menu' , 'menu_id' => 'nav'));
+    ?> 
+
+
+
 
     <?php wp_footer(); ?>
 </body>

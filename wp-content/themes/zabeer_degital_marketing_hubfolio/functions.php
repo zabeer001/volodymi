@@ -53,3 +53,7 @@ function zabeer_customizer_register($wp_customize){
 
 add_action('customize_register', 'zabeer_customizer_register');
 
+//register nav menu
+
+register_nav_menu('main_menu', __('Main Menu', 'zabeer'));
+
