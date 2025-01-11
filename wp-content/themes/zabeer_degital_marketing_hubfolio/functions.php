@@ -9,26 +9,22 @@ add_theme_support("title-tag");
 // Theme CSS and jquery files calling 
 
 function zabeer_css_js_file_calling() {
-    // Enqueue main stylesheet
-    wp_enqueue_style('zabeer-style', get_stylesheet_uri());
+    // Enqueue Styles
+    wp_enqueue_style('zabeer-style', get_stylesheet_uri(), array(), wp_get_theme()->get('Version'));
+    wp_enqueue_style('plugin', get_template_directory_uri() . '/common/css/plugins.css', array(), '3.7.1', 'all');
+    wp_enqueue_style('common_style', get_template_directory_uri() . '/common/css/common_style.css', array(), '3.7.1', 'all');
+    wp_enqueue_style('home2-style', get_template_directory_uri() . '/assets/css/home2-style.css', array(), '3.7.1', 'all');
 
-    // Register styles with dependencies, versioning, and media types
-    wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.css', array(), '5.3.3', 'all');
-    wp_register_style('custom', get_template_directory_uri() . '/css/custom.css', array(), '1.0.0', 'all');
-
-    // Enqueue registered styles
-    wp_enqueue_style('bootstrap');
-    wp_enqueue_style('custom');
-
-    // Ensure jQuery is loaded properly (WordPress has jQuery bundled)
-    wp_enqueue_script('jquery');
-
-    // Register Bootstrap JS (set 'true' to load in footer)
-    wp_register_script('bootstrap-js', get_template_directory_uri() . '/js/bootstrap.js', array('jquery'), '5.3.3', true);
-    
-    // Enqueue the Bootstrap script
-    wp_enqueue_script('bootstrap-js');
+    // Enqueue Scripts
+    wp_enqueue_script('jquery'); // WordPress jQuery
+    wp_enqueue_script('wow', get_template_directory_uri() . '/common/js/lib/wow.min.js', array('jquery'), '3.7.1', true);
+    wp_enqueue_script('scrollit', get_template_directory_uri() . '/common/js/lib/scrollIt.min.js', array('jquery'), '3.7.1', true);
+    wp_enqueue_script('isotope', get_template_directory_uri() . '/common/js/lib/isotope.pkgd.min.js', array('jquery'), '3.7.1', true);
+    wp_enqueue_script('gsap_min', get_template_directory_uri() . '/common/js/gsap_lib/gsap.min.js', array('jquery'), '3.7.1', true);
+    wp_enqueue_script('common_scripts', get_template_directory_uri() . '/common/js/common_scripts.js', array('jquery', 'wow', 'scrollit', 'isotope'), '3.7.1', true);
+    wp_enqueue_script('main_script', get_template_directory_uri() . '/assets/js/scripts.js', array('jquery', 'scrollit', 'swiper'), '3.7.1', true);
 }
+
 add_action('wp_enqueue_scripts', 'zabeer_css_js_file_calling');
 
 
